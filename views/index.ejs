@@ -1,0 +1,17 @@
+<%- include('partials/header', {title:"P, R, S: Tournament of Champions"}) -%>
+
+<p> welcome! today is <p id="demo"></p> </p>
+<p id="demo"></p>
+
+<script>
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+const d = new Date();
+let day = weekday[d.getDay()];
+document.getElementById("demo").innerHTML = day;
+</script>
+  <br>
+  <br>
+  <a href="/play">Click to play a round of Paper, Rock, Scissors</a>
+
+  <%- include('partials/footer') -%>

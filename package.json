@@ -1,7 +1,7 @@
 {
   "name": "express-servers-GET",
   "version": "1.0.0",
-  "description": "a web application created to track houseplant watering cycles",
+  "description": "A basic Paper, Rock, Scissors game with multiple opponents",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
