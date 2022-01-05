@@ -1,6 +1,6 @@
 <%- include('partials/header', {title:"P, R, S: Tournament of Champions"}) -%>
 
-<p> welcome! today is <p id="demo"></p> </p>
+<center><h3 id="demo">welcome! today is </h3><center>
 <p id="demo"></p>
 
 <script>
@@ -8,10 +8,9 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 
 const d = new Date();
 let day = weekday[d.getDay()];
-document.getElementById("demo").innerHTML = day;
+document.getElementById("demo").innerHTML += day.toLowerCase();
 </script>
   <br>
   <br>
-  <a href="/play">Click to play a round of Paper, Rock, Scissors</a>
 
   <%- include('partials/footer') -%>

@@ -1,0 +1,33 @@
+<%- include('partials/header', {title:"Play: P, R, S"}) -%>
+
+
+<center><h3 id="demo">welcome! today is </h3><center>
+
+  <script>
+  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+  const d = new Date();
+  let day = weekday[d.getDay()];
+  document.getElementById("demo").innerHTML += day.toLowerCase();
+  </script>
+
+  <h3>monday:</h3>
+
+  <%for(i in data){  %>
+
+  <option value="<%=data[i].days%>"><%=data[i].days%></option>
+
+
+  <%}%>
+
+  <h3>tuesday:</h3>
+  <h3>wednesday:</h3>
+  <h3>thursday:</h3>
+  <h3>friday:</h3>
+  <h3>saturday:</h3>
+  <h3>sunday:</h3>
+
+
+
+
+  <%- include('partials/footer') -%>

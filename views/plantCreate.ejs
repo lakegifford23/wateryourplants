@@ -1,15 +1,30 @@
-<%- include('partials/header', {title:"Create Opponent"}) -%>
+<%- include('partials/header', {title:"add plant"}) -%>
 
-<h2>Create a New Opponent!</h2>
+<center><h2>add a new plant!</h2>
 
 <form action="/plantCreate" method="POST">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="opponentName" value=""><br>
-  <label for="photo">Link to Photo:</label>
-  <input type="text" id="photo" name="opponentPhoto" value=""><br>
+  <label for="name">name:</label>
+  <input type="text" id="name" name="plantName" value=""><br>
+  <label for="photo">location:</label>
+  <input type="text" id="location" name="plantLocation" value=""><br>
+  <label for="photo">water needed (oz):</label>
+  <input type="text" id="water" name="waterAmount" value=""><br>
+
+  <label for="cars">what days is this plant checked/watered?:</label>
+<select id="days" name="days" size="4" multiple>
+  <option value="monday">monday</option>
+  <option value="tuesday">tuesday</option>
+  <option value="wednesday">wednesday</option>
+  <option value="thursday">thursday</option>
+  <option value="tuesday">friday</option>
+  <option value="wednesday">saturday</option>
+  <option value="thursday">sunday</option>
+</select><br><br>
+
+
   <br><br>
-  <input type="submit" value="Create a new opponent!">
+  <input type="submit" value="add plant">
 
 </form>
-
+</center>
 <%- include('partials/footer') -%>

@@ -1,22 +1,17 @@
 <%- include('partials/header', {title:"P, R, S: High Scores"}) -%>
 
-<h2>list of plants</h2>
+<center><h2>list of plants</h2></center>
+<center><h3>click for more info</h3></center>
 <table>
   <tr>
     <th>
-      User
+      name
     </th>
     <th>
-      Wins
+      location
     </th>
     <th>
-      Losses
-    </th>
-    <th>
-      Ties
-    </th>
-    <th>
-      Win %
+      water needed (oz)
     </th>
   </tr>
   <%for(let i =0; i<opponents.length; i++){%>
@@ -24,16 +19,10 @@
     <a href="/opponent/<%=opponents[i].name%>"><%=opponents[i].name%></a>
   </th>
   <th>
-    <%=opponents[i].win%>
+    <%=opponents[i].location%>
   </th>
   <th>
-    <%=opponents[i].lose%>
-  </th>
-  <th>
-    <%=opponents[i].tie%>
-  </th>
-  <th>
-    <%=opponents[i].win_percent%>
+    <%=opponents[i].water%>
   </th>
   </tr>
   <%}%>

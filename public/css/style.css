@@ -1,7 +1,7 @@
 body {
   background-color: #A397BC;
   font-size: 18px;
-  color: #000080;
+  color: #000000;
   font-family: 'Raleway', sans-serif;
 }
 
@@ -42,7 +42,7 @@ button:focus {
 
 table {
   border-collapse: collapse;
-  background-color: #4dffe7;
+  background-color: #9fc09a;
   margin: auto;
   width: 50%;
 }
@@ -54,15 +54,15 @@ table, th, td {
 }
 
 tr:hover {
-  background-color: #ccfff8;
+  background-color: #BBD2B8;
 }
 
 a {
-  color: #000080;
+  color: #000000;
 }
 
 a:hover {
-  color: #00ccb1;
+  color: #7a689e;
 }
 
 img {

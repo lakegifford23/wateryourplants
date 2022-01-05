@@ -5,7 +5,7 @@ const ejs = require('ejs');
 
 //..............Create an Express server object..................//
 const app = express();
-
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 //..............Apply Express middleware to the server object....//
 app.use(express.json()); //Used to parse JSON bodies (needed for POST requests)
 app.use(express.urlencoded());
@@ -22,14 +22,19 @@ app.get('/', function(request, response) {
   response.render("index");
 });
 
-app.get('/play', function(request, response) {
+app.get('/schedule', function(request, response) {
     let players = JSON.parse(fs.readFileSync('data/opponents.json'));
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render("play", {
+    response.render("schedule", {
       data: players
     });
 });
+let players = (JSON.parse(fs.readFileSync('data/opponents.json')));
+
+  //console.log(players.plant.photo);
+
+
 
 app.get('/results', function(request, response) {
     let players = JSON.parse(fs.readFileSync('data/opponents.json'));
@@ -134,23 +139,38 @@ app.get('/plantCreate', function(request, response) {
 });
 
 app.post('/plantCreate', function(request, response) {
-    let opponentName = request.body.opponentName;
-    let opponentPhoto = request.body.opponentPhoto;
-    if(opponentName&&opponentPhoto){
+  let dayFile = JSON.parse(fs.readFileSync('data/days.json'));
+
+    let plantName = request.body.plantName;
+    let plantLocation = request.body.plantLocation;
+    let waterAmount = request.body.waterAmount;
+    let days = request.body.days;
+    for(i in days){
+      for(x in weekday){
+        if(i == x){
+          console.log(dayFile);
+          dayFile[weekday[x]].push(plantName);
+        }
+      }
+    }
+    if(plantName&&plantLocation&&waterAmount){
       let opponents = JSON.parse(fs.readFileSync('data/opponents.json'));
       let newOpponent={
-        "name": opponentName,
-        "photo": opponentPhoto,
-        "win":0,
+        "name": plantName,
+        "location": plantLocation,
+        "water": plantLocation,
+        "days": days,
         "lose": 0,
         "tie": 0,
       }
-      opponents[opponentName] = newOpponent;
+      opponents[plantName] = newOpponent;
       fs.writeFileSync('data/opponents.json', JSON.stringify(opponents));
+      fs.writeFileSync('data/days.json', JSON.stringify(dayFile));
+
 
       response.status(200);
       response.setHeader('Content-Type', 'text/html')
-      response.redirect("/opponent/"+opponentName);
+      response.redirect("/opponent/"+plantName);
     }else{
       response.status(400);
       response.setHeader('Content-Type', 'text/html')
