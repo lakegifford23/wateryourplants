@@ -1,0 +1,1 @@
+{" jade plant":{"name":" jade plant","location":"office","water":"6","days":["monday","tuesday","wednesday"],"watered":"wateredPlants"}," cactus":{"name":" cactus","location":"kitchen","water":"1","days":["wednesday","thursday"],"watered":"wateredPlants"}," air plant":{"name":" air plant","location":"office","water":"3","days":["monday"],"watered":"checkedPlants"}}

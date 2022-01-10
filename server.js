@@ -5,7 +5,7 @@ const ejs = require('ejs');
 
 //..............Create an Express server object..................//
 const app = express();
-const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const weekday = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"];
 //..............Apply Express middleware to the server object....//
 app.use(express.json()); //Used to parse JSON bodies (needed for POST requests)
 app.use(express.urlencoded());
@@ -17,110 +17,75 @@ app.set('view engine', 'ejs'); //specify templating library
 //Express checks routes in the order in which they are defined
 
 app.get('/', function(request, response) {
+  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+  const d = new Date();
+  //let day = weekday[d.getDay()];
+  let day = "monday"
+  //console.log(day);
+
+  let dayObject = JSON.parse(fs.readFileSync('data/days.json'));
+  let plants = JSON.parse(fs.readFileSync('data/plants.json'));
+  let data2=[];
+
+  for(name in plants){
+    data2.push(plants[name])
+  }
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render("index");
+  response.render("index", {
+    data: dayObject,
+    day: day,
+    data2: data2
+  });
 });
 
 app.get('/schedule', function(request, response) {
-    let players = JSON.parse(fs.readFileSync('data/opponents.json'));
+    let dayObject = JSON.parse(fs.readFileSync('data/days.json'));
+    let plants = JSON.parse(fs.readFileSync('data/plants.json'));
+    let data2=[];
+
+    for(name in plants){
+      data2.push(plants[name])
+    }
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("schedule", {
-      data: players
+      data: dayObject,
+      data2: data2
     });
 });
-let players = (JSON.parse(fs.readFileSync('data/opponents.json')));
+let players = (JSON.parse(fs.readFileSync('data/plants.json')));
 
   //console.log(players.plant.photo);
 
-
-
-app.get('/results', function(request, response) {
-    let players = JSON.parse(fs.readFileSync('data/opponents.json'));
-
-    //accessing URL query string information from the request object
-    let opponent = request.query.opponent;
-    let playerThrow = request.query.throw;
-
-    if(players[opponent]){
-      let opponentThrowChoices=["Paper", "Rock", "Scissors"];
-      let results={};
-
-      results["playerThrow"]=playerThrow;
-      results["opponentName"]=opponent;
-      results["opponentPhoto"]=players[opponent].photo;
-      results["opponentThrow"] = opponentThrowChoices[Math.floor(Math.random() * 3)];
-
-      if(results["playerThrow"]===results["opponentThrow"]){
-        results["outcome"] = "tie";
-      }else if(results["playerThrow"]==="Paper"){
-        if(results["opponentThrow"]=="Scissors") results["outcome"] = "lose";
-        else results["outcome"] = "win";
-      }else if(results["playerThrow"]==="Scissors"){
-        if(results["opponentThrow"]=="Rock") results["outcome"] = "lose";
-        else results["outcome"] = "win";
-      }else{
-        if(results["opponentThrow"]=="Paper") results["outcome"] = "lose";
-        else results["outcome"] = "win";
-      }
-
-      if(results["outcome"]=="lose") players[opponent]["win"]++;
-      else if(results["outcome"]=="win") players[opponent]["lose"]++;
-      else players[opponent]["tie"]++;
-
-      //update data store to permanently remember results
-      fs.writeFileSync('data/opponents.json', JSON.stringify(players));
-
-      response.status(200);
-      response.setHeader('Content-Type', 'text/html')
-      response.render("results", {
-        data: results
-      });
-    }else{
-      response.status(404);
-      response.setHeader('Content-Type', 'text/html')
-      response.render("error", {
-        "errorCode":"404"
-      });
-    }
-});
-
 app.get('/plants', function(request, response) {
-  let opponents = JSON.parse(fs.readFileSync('data/opponents.json'));
-  let opponentArray=[];
+  let plants = JSON.parse(fs.readFileSync('data/plants.json'));
+  let plantArray=[];
 
   //create an array to use sort, and dynamically generate win percent
-  for(name in opponents){
-    opponents[name].win_percent = (opponents[name].win/parseFloat(opponents[name].win+opponents[name].lose+opponents[name].tie) * 100).toFixed(2);
-    if(opponents[name].win_percent=="NaN") opponents[name].win_percent=0;
-    opponentArray.push(opponents[name])
+  for(name in plants){
+    plantArray.push(plants[name])
   }
-  opponentArray.sort(function(a, b){
-    return parseFloat(b.win_percent)-parseFloat(a.win_percent);
-  })
 
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render("plants",{
-    opponents: opponentArray
+    data: plantArray
   });
 });
 
-app.get('/opponent/:opponentName', function(request, response) {
-  let opponents = JSON.parse(fs.readFileSync('data/opponents.json'));
+app.get('/plant/:plantName', function(request, response) {
+  let plants = JSON.parse(fs.readFileSync('data/plants.json'));
 
   // using dynamic routes to specify resource request information
-  let opponentName = request.params.opponentName;
+  let plantName = request.params.plantName;
 
-  if(opponents[opponentName]){
-    opponents[opponentName].win_percent = (opponents[opponentName].win/parseFloat(opponents[opponentName].win+opponents[opponentName].lose+opponents[opponentName].tie) * 100).toFixed(2);
-    if(opponents[opponentName].win_percent=="NaN") opponents[opponentName].win_percent=0;
-
+  if(plants[plantName]){
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("plantDetails",{
-      opponent: opponents[opponentName]
+      data: plants[plantName]
     });
 
   }else{
@@ -139,38 +104,51 @@ app.get('/plantCreate', function(request, response) {
 });
 
 app.post('/plantCreate', function(request, response) {
-  let dayFile = JSON.parse(fs.readFileSync('data/days.json'));
-
-    let plantName = request.body.plantName;
+    let watered;
+  let dayObject = JSON.parse(fs.readFileSync('data/days.json'));
+    if(request.body.wateredChecked == "checked"){
+      watered = "checkedPlants";
+    }else{
+    watered = "wateredPlants";
+    }
+    console.log(watered);
+    let plantName = " " + request.body.plantName;
     let plantLocation = request.body.plantLocation;
     let waterAmount = request.body.waterAmount;
     let days = request.body.days;
+    if (typeof days === 'string' || days instanceof String){
+      days = [days];
+    }
+
+    console.log(days);
     for(i in days){
+      console.log(days[i]);
       for(x in weekday){
-        if(i == x){
-          console.log(dayFile);
-          dayFile[weekday[x]].push(plantName);
+        if(days[i] == weekday[x]){
+          console.log(i);
+          console.log(x);
+
+          dayObject[weekday[x]][watered].push(plantName);
         }
       }
     }
-    if(plantName&&plantLocation&&waterAmount){
-      let opponents = JSON.parse(fs.readFileSync('data/opponents.json'));
-      let newOpponent={
-        "name": plantName,
+    if(plantName&&plantLocation&&waterAmount&&days&&watered){
+      let plants = JSON.parse(fs.readFileSync('data/plants.json'));
+      let newPlant={
+        "name": plantName ,
         "location": plantLocation,
-        "water": plantLocation,
+        "water": waterAmount,
         "days": days,
-        "lose": 0,
-        "tie": 0,
+        "watered": watered
       }
-      opponents[plantName] = newOpponent;
-      fs.writeFileSync('data/opponents.json', JSON.stringify(opponents));
-      fs.writeFileSync('data/days.json', JSON.stringify(dayFile));
+      plants[plantName] = newPlant;
+      fs.writeFileSync('data/plants.json', JSON.stringify(plants));
+      fs.writeFileSync('data/days.json', JSON.stringify(dayObject));
 
 
       response.status(200);
       response.setHeader('Content-Type', 'text/html')
-      response.redirect("/opponent/"+plantName);
+      response.redirect("/plant/"+plantName);
     }else{
       response.status(400);
       response.setHeader('Content-Type', 'text/html')

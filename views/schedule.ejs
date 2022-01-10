@@ -1,4 +1,4 @@
-<%- include('partials/header', {title:"Play: P, R, S"}) -%>
+<%- include('partials/header', {title:"plant details"}) -%>
 
 
 <center><h3 id="demo">welcome! today is </h3><center>
@@ -11,21 +11,450 @@
   document.getElementById("demo").innerHTML += day.toLowerCase();
   </script>
 
+
+
+
+
+
+
+
   <h3>monday:</h3>
+  <h4>to water</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "monday" && data2[i].watered == "wateredPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
+   <h4>to check</h4>
+   <table>
+     <tr>
+       <th>
+         name
+       </th>
+       <th>
+         location
+       </th>
+       <th>
+         water needed (oz)
+       </th>
+     </tr>
+     <%for(let i =0; i<data2.length; i++){
+       for(j in data2[i].days){
+         if(data2[i].days[j] == "monday" && data2[i].watered == "checkedPlants"){%>
+     <th>
+       <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+     </th>
+     <th>
+       <%=data2[i].location%>
+     </th>
+     <th>
+       <%=data2[i].water%>
+     </th>
+     </tr>
+     <%}}}%>
+   </table>
+   <br><br>
 
-  <%for(i in data){  %>
-
-  <option value="<%=data[i].days%>"><%=data[i].days%></option>
 
 
-  <%}%>
+
+
 
   <h3>tuesday:</h3>
+  <h4>to water</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "tuesday" && data2[i].watered == "wateredPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
+  <h4>to check</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "tuesday" && data2[i].watered == "checkedPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
+  <br><br>
+
+
+
+
+
+
   <h3>wednesday:</h3>
+  <h4>to water</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "wednesday" && data2[i].watered == "wateredPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>  <h4>to check</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "wednesday" && data2[i].watered == "checkedPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
+  <br><br>
+
+
+
+
+
+
+
   <h3>thursday:</h3>
+  <h4>to water</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "thursday" && data2[i].watered == "wateredPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
+  <h4>to check</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "thursday" && data2[i].watered == "checkedPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
+  <br><br>
+
+
+
+
+
   <h3>friday:</h3>
+  <h4>to water</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "friday" && data2[i].watered == "wateredPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
+  <h4>to check</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "friday" && data2[i].watered == "checkedPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
+  <br><br>
+
+
+
+
   <h3>saturday:</h3>
+  <h4>to water </h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "saturday" && data2[i].watered == "wateredPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>  <h4>to check</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "saturday" && data2[i].watered == "checkedPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
+  <br><br>
+
+
+
+
+
+
   <h3>sunday:</h3>
+  <h4>to water</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "sunday" && data2[i].watered == "wateredPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
+  <h4>to check</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == "sunday" && data2[i].watered == "checkedPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
 
 
 

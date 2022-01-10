@@ -1,6 +1,6 @@
-<%- include('partials/header', {title:"Opponent Details- P, R, S"}) -%>
+<%- include('partials/header', {title:"plant details"}) -%>
 
-<h2>Opponent - <%=opponent.name%></h2>
+<center><h2>plant info: - <%=data.name%></h2></center>
 
 <table>
   <tr>
@@ -8,7 +8,7 @@
       name:
     </th>
     <td>
-      <%=opponent.name%>
+      <%=data.name%>
     </td>
   </tr>
   <tr>
@@ -16,7 +16,7 @@
       location:
     </th>
     <td>
-      <%=opponent.location%>
+      <%=data.location%>
     </td>
   </tr>
   <tr>
@@ -24,9 +24,18 @@
       water amount (oz):
     </th>
     <td>
-      <%=opponent.water%>
+      <%=data.water%>
     </td>
   </tr>
+  <tr>
+    <th>
+      days watered/checked
+    </th>
+    <td>
+      <%=data.days%>
+    </td>
+  </tr>
+
 </table>
 
 <%- include('partials/footer') -%>

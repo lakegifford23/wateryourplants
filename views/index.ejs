@@ -1,7 +1,64 @@
-<%- include('partials/header', {title:"P, R, S: Tournament of Champions"}) -%>
+<%- include('partials/header', {title:"water your plants!!"}) -%>
 
 <center><h3 id="demo">welcome! today is </h3><center>
-<p id="demo"></p>
+  <h4>to water:</h4>
+
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == day && data2[i].watered == "wateredPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
+  <br><br>
+  <h4>to check:</h4>
+  <table>
+    <tr>
+      <th>
+        name
+      </th>
+      <th>
+        location
+      </th>
+      <th>
+        water needed (oz)
+      </th>
+    </tr>
+    <%for(let i =0; i<data2.length; i++){
+      for(j in data2[i].days){
+        if(data2[i].days[j] == day && data2[i].watered == "checkedPlants"){%>
+    <th>
+      <a href="/plant/<%=data2[i].name%>"><%=data2[i].name%></a>
+    </th>
+    <th>
+      <%=data2[i].location%>
+    </th>
+    <th>
+      <%=data2[i].water%>
+    </th>
+    </tr>
+    <%}}}%>
+  </table>
 
 <script>
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -10,6 +67,7 @@ const d = new Date();
 let day = weekday[d.getDay()];
 document.getElementById("demo").innerHTML += day.toLowerCase();
 </script>
+
   <br>
   <br>
 

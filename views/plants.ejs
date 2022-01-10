@@ -1,4 +1,4 @@
-<%- include('partials/header', {title:"P, R, S: High Scores"}) -%>
+<%- include('partials/header', {title:"plant details"}) -%>
 
 <center><h2>list of plants</h2></center>
 <center><h3>click for more info</h3></center>
@@ -14,15 +14,15 @@
       water needed (oz)
     </th>
   </tr>
-  <%for(let i =0; i<opponents.length; i++){%>
+  <%for(let i =0; i<data.length; i++){%>
   <th>
-    <a href="/opponent/<%=opponents[i].name%>"><%=opponents[i].name%></a>
+    <a href="/plant/<%=data[i].name%>"><%=data[i].name%></a>
   </th>
   <th>
-    <%=opponents[i].location%>
+    <%=data[i].location%>
   </th>
   <th>
-    <%=opponents[i].water%>
+    <%=data[i].water%>
   </th>
   </tr>
   <%}%>
