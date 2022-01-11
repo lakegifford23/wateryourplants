@@ -10,7 +10,7 @@ const weekday = ["sunday","monday","tuesday","wednesday","thursday","friday","sa
 app.use(express.json()); //Used to parse JSON bodies (needed for POST requests)
 app.use(express.urlencoded());
 app.use(express.static('public')); //specify location of static assests
-app.set('docs', __dirname + '/docs'); //specify location of templates
+app.set('views', __dirname + '/views'); //specify location of templates
 app.set('view engine', 'ejs'); //specify templating library
 
 //.............Define server routes..............................//
@@ -120,7 +120,7 @@ app.post('/plantCreate', function(request, response) {
       days = [days];
     }
 
-    console.log(days);
+    console.log(days, "hello");
     for(i in days){
       console.log(days[i]);
       for(x in weekday){

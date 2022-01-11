@@ -1,1 +1,47 @@
-{"monday":{"wateredPlants":[" jade plant"],"checkedPlants":[" air plant"]},"tuesday":{"wateredPlants":[" jade plant"],"checkedPlants":[]},"wednesday":{"wateredPlants":[" jade plant"," cactus"],"checkedPlants":[]},"thursday":{"wateredPlants":[" cactus"],"checkedPlants":[]},"friday":{"wateredPlants":[],"checkedPlants":[]},"saturday":{"wateredPlants":[],"checkedPlants":[]},"sunday":{"wateredPlants":[],"checkedPlants":[]}}
+{
+  "monday": {
+    "wateredPlants": [
+      " jade plant"
+    ],
+    "checkedPlants": [
+      " air plant"
+    ]
+  },
+  "tuesday": {
+    "wateredPlants": [
+      " jade plant"
+    ],
+    "checkedPlants": [
+      " tiny cactus"
+    ]
+  },
+  "wednesday": {
+    "wateredPlants": [
+      " jade plant",
+      " cactus"
+    ],
+    "checkedPlants": [
+      " tiny cactus"
+    ]
+  },
+  "thursday": {
+    "wateredPlants": [
+      " cactus"
+    ],
+    "checkedPlants": [
+      " tiny cactus"
+    ]
+  },
+  "friday": {
+    "wateredPlants": [],
+    "checkedPlants": []
+  },
+  "saturday": {
+    "wateredPlants": [],
+    "checkedPlants": []
+  },
+  "sunday": {
+    "wateredPlants": [],
+    "checkedPlants": []
+  }
+}
