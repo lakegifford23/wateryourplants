@@ -20,8 +20,7 @@ app.get('/', function(request, response) {
   const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
   const d = new Date();
-  //let day = weekday[d.getDay()];
-  let day = "monday"
+  let day = weekday[d.getDay()];
   //console.log(day);
 
   let dayObject = JSON.parse(fs.readFileSync('data/days.json'));
