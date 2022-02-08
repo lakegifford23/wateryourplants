@@ -43,7 +43,6 @@ app.get('/schedule', function(request, response) {
     let dayObject = JSON.parse(fs.readFileSync('data/days.json'));
     let plants = JSON.parse(fs.readFileSync('data/plants.json'));
     let data2=[];
-
     for(name in plants){
       data2.push(plants[name])
     }
@@ -76,10 +75,12 @@ app.get('/plants', function(request, response) {
 
 app.get('/plant/:plantName', function(request, response) {
   let plants = JSON.parse(fs.readFileSync('data/plants.json'));
+  //accessing URL query string information from the request object
+  //let plantName = request.query.plantName;
+  //console.log(plantName);
 
   // using dynamic routes to specify resource request information
   let plantName = request.params.plantName;
-
   if(plants[plantName]){
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
@@ -147,7 +148,7 @@ app.post('/plantCreate', function(request, response) {
 
       response.status(200);
       response.setHeader('Content-Type', 'text/html')
-      response.redirect("/plant/"+plantName);
+      response.redirect("/createdPlant?"+ "plantName=" + plantName);
     }else{
       response.status(400);
       response.setHeader('Content-Type', 'text/html')
@@ -156,7 +157,29 @@ app.post('/plantCreate', function(request, response) {
       });
     }
 });
+app.get('/createdPlant', function(request, response) {
+  let plants = JSON.parse(fs.readFileSync('data/plants.json'));
+  //accessing URL query string information from the request object
+  let plantName = request.query.plantName;
+  console.log(plantName);
 
+  // using dynamic routes to specify resource request information
+  //let plantName = request.params.plantName;
+  if(plants[plantName]){
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("plantDetails",{
+      data: plants[plantName]
+    });
+
+  }else{
+    response.status(404);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("error", {
+      "errorCode":"404"
+    });
+  }
+});
 // Because routes/middleware are applied in order,
 // this will act as a default error route in case of
 // a request fot an invalid route
